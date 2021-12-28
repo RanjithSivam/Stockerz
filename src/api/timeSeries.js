@@ -10,7 +10,7 @@ const restTemplate = axios.create({
 
 const parseData = (data) => {
   const rawDate = Object.keys(data[Object.keys(data)[1]]);
-  const date = rawDate.map((curr) => new Date(curr).getTime());
+  const date = rawDate.map((curr) => Date.parse(curr) / 1000);
   const rawSeries = Object.values(data[Object.keys(data)[1]]);
   const series = rawSeries.map((curr) => [
     curr['1. open'],
@@ -22,7 +22,7 @@ const parseData = (data) => {
 
   const tradingViewData = date.map((curr, index) => {
     return {
-      time: new Date(curr).toISOString().substring(0, 10),
+      time: curr,
       open: parseFloat(series[index][0]),
       high: parseFloat(series[index][1]),
       low: parseFloat(series[index][2]),
@@ -32,12 +32,13 @@ const parseData = (data) => {
 
   const tradingViewVolume = date.map((curr, index) => {
     return {
-      time: new Date(curr).toISOString().substring(0, 10),
+      time: curr,
       value: parseFloat(series[index][4]),
     };
   });
   tradingViewData.reverse();
   tradingViewVolume.reverse();
+
   return { data: tradingViewData, volume: tradingViewVolume };
 };
 
