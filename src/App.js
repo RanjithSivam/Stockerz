@@ -1,29 +1,15 @@
-import './App.css';
-import TimeSeriesCharts from './components/TimeSeriesCharts';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ChartPropertiesContext from './context/ChartPropertiesContext';
-import SavedStocksContext from './context/SavedStocksContext';
-import SavedStock from './components/SavedStock';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CombinedContext from "./context/CombinedContext";
+import Sidebar from "./components/sidebar/Sidebar";
+import StockCrypto from "./components/stockCrypto";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App flex">
+        <Sidebar />
         <Routes>
-          <Route
-            exact
-            path="/chart/:stock"
-            element={
-              <SavedStocksContext>
-                <ChartPropertiesContext>
-                  <div className="flex">
-                    <SavedStock />
-                    <TimeSeriesCharts />
-                  </div>
-                </ChartPropertiesContext>
-              </SavedStocksContext>
-            }
-          />
+          <Route exact path="/stock/:stock" element={<StockCrypto />} />
         </Routes>
       </div>
     </BrowserRouter>

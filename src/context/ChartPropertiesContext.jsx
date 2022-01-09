@@ -1,21 +1,24 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from "react";
 
 const PropertiesContext = createContext();
 
 const initialState = {
-  interval: 'D',
-  chart: 1,
-  indicator: 1,
+  interval: "D",
+  chart: "candles",
+  indicator: ["volume"]
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'indicator':
-      return { ...state, indicator: action.value };
-    case 'chart':
-      return { ...state, chart: action.value };
-    case 'interval':
-      return { ...state, interval: action.value };
+    case "add-indicator":
+      return { ...state, indicator: [...state.indicator, action.payload] };
+    case "remove-indicator":
+      const newState = state.indicator.filter((ele) => ele !== action.payload);
+      return { ...state, indicator: newState };
+    case "chart":
+      return { ...state, chart: action.payload };
+    case "interval":
+      return { ...state, interval: action.payload };
     default:
   }
 };
@@ -26,7 +29,7 @@ export default function ChartPropertiesContext({ children }) {
     <PropertiesContext.Provider
       value={{
         state,
-        dispatch,
+        dispatch
       }}
     >
       {children}

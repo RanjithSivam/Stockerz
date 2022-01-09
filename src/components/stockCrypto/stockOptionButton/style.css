@@ -1,0 +1,30 @@
+.stock_option_button {
+  margin: 0 0 20px 0;
+}
+
+.stock_option_button .stock_quotes {
+  display: flex;
+  gap: 5px;
+  margin: 0 0 10px 0;
+  align-items: flex-end;
+}
+
+.stock_option_button h1 {
+  font-size: 42px;
+  color: #424c5e;
+}
+
+.stock_option_button p.gain {
+  color: rgb(29, 179, 29);
+  font-size: 24px;
+}
+
+.stock_option_button .stock_options {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #424c5e;
+  text-transform: capitalize;
+}

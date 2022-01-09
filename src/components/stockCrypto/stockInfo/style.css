@@ -1,0 +1,50 @@
+.stock_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+  height: 100%;
+}
+
+.info {
+  padding: 10px;
+  border: 1px solid #edf1f4;
+  box-shadow: 0 0 10px 0px #edf1f4;
+  border-radius: 10px;
+}
+
+.info > h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #424c5e;
+  font-weight: bold;
+}
+
+.info .details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info .details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.info p > .name {
+  color: #aaacb8;
+  text-transform: capitalize;
+  font-size: 14px;
+  text-align: left;
+}
+
+.info p > .value {
+  font-size: 14px;
+  color: #424c5e;
+  font-weight: 500;
+  opacity: 0.75;
+  text-transform: capitalize;
+  text-align: right;
+}

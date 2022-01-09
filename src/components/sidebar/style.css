@@ -1,0 +1,91 @@
+.sidebar {
+  background-color: #edf1f4;
+  color: #aaacb8;
+  width: 20%;
+  height: 100vh;
+  padding: 20px 20px;
+  position: relative;
+}
+
+.expand_button {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar .name {
+  display: flex;
+  color: #424c5e;
+}
+
+.sidebar .name > h2 {
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.sidebar .name > p {
+  font-size: 16px;
+}
+
+.sidebar .logo button {
+  background-color: #4f39f6;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actions .options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 5px;
+}
+
+.actions .options button a {
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 5px;
+}
+
+.actions .options button.active {
+  background-color: #fff;
+  color: #424c5e;
+  opacity: 0.7;
+}
+
+.actions .options button.active i {
+  color: #4f39f6;
+}
+
+.actions .options button p {
+  text-transform: capitalize;
+}
+
+.chart_options > p,
+.watchlist_options > p {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
