@@ -5,6 +5,7 @@ import { PropertiesContext } from "../../../context/ChartPropertiesContext";
 import { v4 as uuidv4 } from "uuid";
 import { DataContext } from "../../../context/ChartDataContext";
 import { quote } from "../../../api/stock";
+import "./style.css";
 
 const indicatorDetails = {
   ema: "line",
@@ -136,7 +137,7 @@ function Chart({ fullscreen }) {
         } else {
           data = chartSeries.addHistogramSeries({
             // color: "#182233",
-            color: "rgba(0,0,0,0.1)",
+            color: "rgba(0,0,0,0.5)",
             lineWidth: 1,
             priceFormat: {
               type: "volume"
@@ -184,7 +185,7 @@ function Chart({ fullscreen }) {
   return (
     <div className="relative">
       <div className="legend">
-        <p className="title text-white">{`${stock} ${chartPropertieState.interval}`}</p>
+        <p className="title text-black">{`${stock} ${chartPropertieState.interval}`}</p>
         <div className="active_indicator">
           {indicator.map((ele) => (
             <button
@@ -196,8 +197,9 @@ function Chart({ fullscreen }) {
                   payload: ele.name
                 });
               }}
+              className=""
             >
-              <i className="fas fa-times"></i>
+              <i class="uil uil-times"></i>
               <p>{ele.name}</p>
             </button>
           ))}

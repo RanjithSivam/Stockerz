@@ -1,17 +1,25 @@
+import { useContext, useEffect } from "react";
+import { StockContext } from "../../context/StockInfoContext";
 import "./style.css";
 export default function TopBar() {
+  const { state: stockInfoState } = useContext(StockContext);
+
+  useEffect(() => {
+    console.log(stockInfoState);
+  }, [stockInfoState]);
   return (
     <div className="top_bar">
       <div className="invest_info">
-        <div className="logo">
-          <img
-            src="https://static.finnhub.io/logo/87cb30d8-80df-11ea-8951-00000000092a.png"
-            alt=" "
-          />
-        </div>
-        <div className="name">
-          <p>IBM</p>
-        </div>
+        {stockInfoState.rawInfo[1] && (
+          <div className="logo">
+            <img src={stockInfoState.rawInfo[1].logo} alt=" " />
+          </div>
+        )}
+        {stockInfoState.rawInfo[1] && (
+          <div className="name">
+            <p>{stockInfoState.rawInfo[1].ticker}</p>
+          </div>
+        )}
       </div>
       <div className="top_actions">
         <button className="add_watchlist">

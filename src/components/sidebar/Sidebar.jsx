@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./style.css";
 
 const options = {
@@ -7,51 +7,52 @@ const options = {
     {
       icon: "uil uil-search",
       content: "Search Anything",
-      name: "search"
+      name: "/search"
     },
     {
       icon: "uil uil-users-alt",
       content: "Community",
-      name: "community"
+      name: "/community"
     },
     {
       icon: "uil uil-comment-alt",
       content: "Help & Support",
-      name: "help"
+      name: "/help"
     }
   ],
   general: [
     {
       icon: "uil uil-estate",
       content: "Home",
-      name: "home"
+      name: "/home"
     },
     {
       icon: "uil uil-chart-line",
       content: "Stock & Funds",
-      name: "stock"
+      name: "/stock"
     },
     {
       icon: "uil uil-bill",
       content: "Investing",
-      name: "investing"
+      name: "/investing"
     },
     {
       icon: "uil uil-bitcoin",
       content: "Crypto",
-      name: "crypto"
+      name: "/crypto"
     },
     {
       icon: "uil uil-wallet",
       content: "Wallet",
-      name: "wallet"
+      name: "/wallet"
     }
   ]
 };
 
 export default function Sidebar() {
   // const [expand, setExpand] = useState();
-  const [active, setActive] = useState("home");
+  // const [active, setActive] = useState("home");
+  const location = useLocation();
   // ${
   //   expand ? "w-40" : "w-8"
   // }
@@ -74,10 +75,9 @@ export default function Sidebar() {
             <button
               key={ele.name}
               value={ele.name}
-              onClick={() => setActive(ele.name)}
-              className={active === ele.name ? "active" : ""}
+              className={location.pathname.includes(ele.name) ? "active" : ""}
             >
-              <Link to={`/${ele.name}`}>
+              <Link to={"." + ele.name}>
                 <i className={ele.icon}></i>
                 <p>{ele.content}</p>
               </Link>
@@ -91,10 +91,9 @@ export default function Sidebar() {
               <button
                 key={ele.name}
                 value={ele.name}
-                onClick={() => setActive(ele.name)}
-                className={active === ele.name ? "active" : ""}
+                className={location.pathname.includes(ele.name) ? "active" : ""}
               >
-                <Link to={`/${ele.name}`}>
+                <Link to={"." + ele.name}>
                   <i className={ele.icon}></i>
                   <p>{ele.content}</p>
                 </Link>

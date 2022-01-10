@@ -61,34 +61,52 @@ const quote = async (symbol) => {
   });
 
   const value = Object.values(data[Object.keys(data)[0]]);
+  const result = [
+    {
+      name: "symbol",
+      value: String(value[0])
+    },
+    {
+      name: "open",
+      value: parseFloat(value[1]).toFixed(4)
+    },
+    {
+      name: "high",
+      value: parseFloat(value[2]).toFixed(4)
+    },
+    {
+      name: "low",
+      value: parseFloat(value[3]).toFixed(4)
+    },
+    {
+      name: "price",
+      value: parseFloat(value[4]).toFixed(4)
+    },
+    {
+      name: "volume",
+      value: parseInt(value[5], 10)
+    },
+    {
+      name: "latestTradingDay",
+      value: Date.parse(value[6])
+    },
+    {
+      name: "previousClose",
+      value: parseInt(value[7], 10).toFixed(4)
+    },
+    {
+      name: "change",
+      value: parseFloat(value[8]).toFixed(4)
+    },
+    {
+      name: "% change",
+      value: value[value.length - 1].slice(0, value[value.length - 1].length)
+    }
+  ];
 
   return {
-    data: [
-      {
-        name: "open",
-        value: parseFloat(value[1]).toFixed(4)
-      },
-      {
-        name: "high",
-        value: parseFloat(value[2]).toFixed(4)
-      },
-      {
-        name: "low",
-        value: parseFloat(value[3]).toFixed(4)
-      },
-      {
-        name: "price",
-        value: parseFloat(value[4]).toFixed(4)
-      },
-      {
-        name: "volume",
-        value: parseInt(value[5], 10)
-      },
-      {
-        name: "% change",
-        value: value[value.length - 1].slice(0, value[value.length - 1].length)
-      }
-    ]
+    data: [result[1], result[2], result[3], result[4], result[5], result[9]],
+    raw: result
   };
 };
 
@@ -136,7 +154,8 @@ const profile = async (symbol) => {
         name: "profit margin",
         value: alphaData.ProfitMargin
       }
-    ]
+    ],
+    raw: [alphaData, finData]
   };
 };
 

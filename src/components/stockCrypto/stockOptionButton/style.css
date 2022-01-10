@@ -15,16 +15,31 @@
 }
 
 .stock_option_button p.gain {
-  color: rgb(29, 179, 29);
+  color: #0f9d58;
+  font-size: 24px;
+}
+
+.stock_option_button p.loss {
+  color: #a52714;
   font-size: 24px;
 }
 
 .stock_option_button .stock_options {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #424c5e;
   text-transform: capitalize;
+}
+
+.stock_options a {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.stock_options button.active a {
+  background-color: #4f39f6;
+  color: #fff;
 }

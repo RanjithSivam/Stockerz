@@ -5,7 +5,8 @@ const PropertiesContext = createContext();
 const initialState = {
   interval: "D",
   chart: "candles",
-  indicator: ["volume"]
+  indicator: ["volume"],
+  fullscreen: false
 };
 
 const reducer = (state, action) => {
@@ -19,6 +20,10 @@ const reducer = (state, action) => {
       return { ...state, chart: action.payload };
     case "interval":
       return { ...state, interval: action.payload };
+    case "fullscreen-on":
+      return { ...state, fullscreen: true };
+    case "fullscreen-off":
+      return { ...state, fullscreen: false };
     default:
   }
 };

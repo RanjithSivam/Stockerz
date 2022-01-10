@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ScreenContext } from "../../context/FullScreenContext";
+import { PropertiesContext } from "../../context/ChartPropertiesContext";
 import Chart from "./chart";
 
 function FullScreenView() {
-  const { state } = useContext(ScreenContext);
+  const { state } = useContext(PropertiesContext);
   if (state.fullscreen) {
     return (
       <div

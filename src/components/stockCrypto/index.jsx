@@ -1,3 +1,4 @@
+import { Route, Routes, Navigate } from "react-router-dom";
 import CombinedContext from "../../context/CombinedContext";
 import TopBar from "../topbar";
 import Chart from "./chart";
@@ -13,8 +14,24 @@ export default () => {
         <div className="flex w-full pt-4">
           <div className="w-3/4 p-1">
             <StockOptionButton />
-            <FullScreenView />
-            <Chart />
+            <Routes>
+              <Route
+                exact
+                path="/chart"
+                element={
+                  <>
+                    <FullScreenView />
+                    <Chart />
+                  </>
+                }
+              />
+              <Route exact path="/summary" element={<></>} />
+              <Route exact path="/statistics" element={<></>} />
+              <Route exact path="/profile" element={<></>} />
+              <Route exact path="/financials" element={<></>} />
+              <Route exact path="/analysis" element={<></>} />
+              <Route path="" element={<Navigate to="./chart" />} />
+            </Routes>
           </div>
           <div className="w-1/4 p-1">
             <StockInfo />

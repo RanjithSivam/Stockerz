@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PropertiesContext } from "../../../context/ChartPropertiesContext";
-import { ScreenContext } from "../../../context/FullScreenContext";
 
 const buttonProperties = [
   {
@@ -33,7 +32,6 @@ export default function ChartAction({ fullscreen }) {
   const [hide, setHide] = useState(true);
   const { state, dispatch } = useContext(PropertiesContext);
 
-  const { dispatch: fullScreenDispatch } = useContext(ScreenContext);
   const changeFrame = (event) => {
     const value = event.target.value;
     dispatch({ type: "interval", payload: value });
@@ -60,8 +58,8 @@ export default function ChartAction({ fullscreen }) {
           className="flex items-center text-xs mr-2"
           onClick={() =>
             fullscreen
-              ? fullScreenDispatch({ type: "off" })
-              : fullScreenDispatch({ type: "on" })
+              ? dispatch({ type: "fullscreen-off" })
+              : dispatch({ type: "fullscreen-on" })
           }
         >
           {fullscreen ? (
